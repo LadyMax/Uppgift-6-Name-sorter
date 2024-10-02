@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 namespace NameSorter
 {
@@ -19,15 +19,14 @@ namespace NameSorter
                 Console.WriteLine(name);
             }
             Console.WriteLine("\nEnter name to search: ");
-            string searchName = Console.ReadLine();
-            if (names.Contains(searchName))
+            string searchName = Console.ReadLine().ToUpper();
+            while (!names.Exists(name => name.ToUpper() == searchName))
             {
-                Console.WriteLine($"{searchName} is in the list.");
+                Console.WriteLine($"{searchName} is not in the list. Try again!");
+                Console.Write("\nEnter name to search: ");
+                searchName = Console.ReadLine().ToUpper();
             }
-            else
-            {
-                Console.WriteLine($"{searchName} is not in the list.");
-            }
+            Console.WriteLine($"{searchName} is in the list.");
             Console.ReadKey();
         }
     }
